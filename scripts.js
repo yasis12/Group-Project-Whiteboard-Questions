@@ -72,3 +72,42 @@ console.log("Shloud be Number: ", fizzBuzzer(4));  // honestly this question was
 // ["bread", "lettuce", "bacon", "tomatoes"] --> false (missing "bread" at end)
 // ["bread", "lettuce", "tomatoes", "bacon", "bread"] --> true
 // ["bread", "lettuce", "tomatoes", "bacon", "bread", "cheese"] --> false ("cheese" is outside the "bread")
+
+// let hasBreadOnBothSides = false;
+// let hasBacon = false;               // here I am defining all of the parameters of the BLT and setitng them to false
+// let hasTomato = false;              // they are false becuase if it fails I would rather have it say it is not a BLT rather than it is one
+// let hasLettuce = false;
+
+function isItBLT (ingredients) {
+    let hasBreadOnBothSides = false;
+    if (ingredients[0] === "bread" && ingredients[ingredients.length - 1] === "bread") {        // checking if bread is in array position 0 and the last position
+        hasBreadOnBothSides = true;  //if it does have bread at the start and end it will set hte parameter to true
+    }
+        // now I have to check for the rest of the ingredients. 
+        // I will need to loop through the ingredients to make sure that it has one of each
+      
+        let hasBacon = false;               // here I am defining all of the parameters of the BLT and setitng them to false
+        let hasTomato = false;              // they are false becuase if it fails I would rather have it say it is not a BLT rather than it is one
+        let hasLettuce = false;
+        for (let i = 0; i < ingredients.length; i++) {
+            if (ingredients[i] === "bacon") {
+                hasBacon = true;
+            } else if (ingredients[i] === "tomato") {
+                hasTomato = true;
+            } else if (ingredients[i] === "lettuce") {
+                hasLettuce = true;
+            } 
+            // else {
+            //     return 'This is not a BLT'
+            // };
+        }
+//         if (hasBreadOnBothSides === true && hasBacon === true && hasTomato === true && hasLettuce === true) {
+//             return 'This is a BLT'
+//         } else {
+//             return 'This is not a BLT'
+//         }
+
+        return (hasBreadOnBothSides && hasBacon && hasLettuce && hasTomato)
+}
+
+console.log(isItBLT(["bread", "bacon", "lettuce", "tomatoes", "bread"]));  // something is wrong and I do not know what . THis says that it is not a BLT but it is.
